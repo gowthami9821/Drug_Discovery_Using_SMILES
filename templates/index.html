@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/DD_img.jpg" />
+
+    <title>NeuroGen | AI Drug Discovery</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://unpkg.com/three@0.132.2/build/three.min.js"></script>
+    <script src="https://unpkg.com/3dmol@1.0.0/build/3Dmol-min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="min-h-screen">
+    <nav class="bg-black bg-opacity-80 backdrop-blur-md fixed w-full z-50 border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-bold title-font gradient-text">NEUROGEN</span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-8">
+                            <a href="#home" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            <a href="#discover" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium">Drug Discovery</a>
+                            <a href="#about" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                            <a href="#team" class="nav-link text-white px-3 py-2 rounded-md text-sm font-medium">Developers</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <a href = "#discover" class="bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-2 rounded-full text-white font-bold hover:opacity-90 transition-all duration-300 pulse">
+                            Get Started
+                        </a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-white">Home</a>
+                <a href="#discover" class="block px-3 py-2 rounded-md text-base font-medium text-white">Drug Discovery</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-white">About</a>
+                <a href="#team" class="block px-3 py-2 rounded-md text-base font-medium text-white">Developers</a>
+            </div>
+            <div class="px-5 py-3">
+                <button class="w-full bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-2 rounded-full text-white font-bold hover:opacity-90 transition-all duration-300">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center">
+            <h1 class="text-5xl md:text-7xl font-bold title-font mb-6">
+                <span class="gradient-text">Revolutionizing</span> Drug Discovery
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
+                Harnessing the power of AI to accelerate the development of life-saving medications through cutting-edge molecular analysis.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href = "#discover" class="bg-gradient-to-r from-cyan-500 to-purple-600 px-8 py-3 rounded-full text-white font-bold hover:opacity-90 transition-all duration-300 glow">
+                    Try Now
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-900 bg-opacity-50 p-6 rounded-xl border border-gray-800 hover:border-cyan-400 transition-all duration-300">
+                <div class="text-cyan-400 text-4xl mb-4">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Molecular Analysis</h3>
+                <p class="text-gray-400">Advanced algorithms analyze molecular structures to predict drug efficacy and safety.</p>
+            </div>
+            <div class="bg-gray-900 bg-opacity-50 p-6 rounded-xl border border-gray-800 hover:border-purple-400 transition-all duration-300">
+                <div class="text-purple-400 text-4xl mb-4">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">AI-Powered</h3>
+                <p class="text-gray-400">Machine learning models trained on millions of compounds to identify promising candidates.</p>
+            </div>
+            <div class="bg-gray-900 bg-opacity-50 p-6 rounded-xl border border-gray-800 hover:border-pink-400 transition-all duration-300">
+                <div class="text-pink-400 text-4xl mb-4">
+                    <i class="fas fa-flask"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Virtual Screening</h3>
+                <p class="text-gray-400">Rapidly screen thousands of compounds virtually before lab testing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="discover" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold title-font mb-4">
+                <span class="gradient-text">Molecular</span> Discovery Platform
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Input a SMILE string to generate molecular structures and predictive analysis.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <!-- Input Panel -->
+    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border border-gray-800 glow">
+        <h3 class="text-2xl font-bold text-white mb-6">Input SMILE Notation</h3>
+        <textarea id="smile-input" class="w-full bg-gray-800 text-white p-4 rounded-lg border border-gray-700 focus:border-cyan-400 focus:outline-none h-32" placeholder="Enter SMILE notation (e.g., C1=CC=CC=C1 for benzene)"></textarea>
+        <!-- Buttons in a row -->
+        <div class="mt-6 flex gap-4">
+            <!-- Reset button on the left -->
+            <button onclick="resetInput()" class="flex-1 bg-gradient-to-r from-red-400 to-black-600 px-6 py-3 rounded-lg text-white font-bold hover:opacity-90 transition-all duration-300">
+                Reset
+            </button>
+
+            <!-- Generate button on the right -->
+            <button onclick="generate()" class="flex-1 bg-gradient-to-r from-cyan-500 to-purple-600 px-6 py-3 rounded-lg text-white font-bold hover:opacity-90 transition-all duration-300">
+                Generate Molecular Structure
+            </button>
+        </div>
+
+        <script>
+            function resetInput() {
+                document.getElementById("smile-input").value = "";
+            }
+        </script>
+
+
+        <!-- Example SMILES -->
+        <div class="mt-8">
+            <h4 class="text-lg font-bold text-white mb-4">Example SMILE Strings</h4>
+            <div class="grid grid-cols-2 gap-3">
+                <button class="smile-example bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300">C1=CC=CC=C1 (Benzene)</button>
+                <button class="smile-example bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300">CC(=O)OC1=CC=CC=C1C(=O)O (Aspirin)</button>
+                <button class="smile-example bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300">CN1C=NC2=C1C(=O)N(C(=O)N2C)C (Caffeine)</button>
+                <button class="smile-example bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300">CC(C)CC1=CC=C(C=C1)C(C)C(=O)O (Ibuprofen)</button>
+            </div>
+        </div>
+    </div>
+
+   <!-- Output Panel -->
+    <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border border-gray-800">
+    <div class="flex items-center justify-center gap-4 mb-6">
+        <!-- Left Side: GIF -->
+        <div class="flex-shrink-0">
+            <img src="/static/atom.gif" alt="Atom Animation" class="w-20 h-20 rounded-lg">
+        </div>
+
+        <!-- Right Side: Heading -->
+        <h3 class="text-2xl font-bold text-white">Molecular Visualization</h3>
+    </div>
+
+    <!-- Molecule Output Section -->
+    <div id="result" class="flex flex-col items-center text-center">
+        <img 
+            id="moleculeImage" 
+            src="" 
+            alt="Generated Molecule" 
+            class="mb-4 hidden object-contain w-half h-half p-2 rounded-lg"
+        />
+        <span class="text-white mt-2" id="placeholderText">Generated molecule will appear here</span>
+        <p class="text-white mt-2"><strong>Output SMILES:</strong> <span id="outputSmiles"></span></p>
+    </div>
+
+    <!-- History -->
+    <hr class="my-6 border-gray-700">
+    <h3 class="text-xl font-bold text-white text-center mb-4">Generation History</h3>
+    <div id="historyPanel" class="space-y-2 text-center">
+        <!-- History entries will appear here -->
+    </div>
+</div>
+</div>
+
+<!-- MarvinJS dependencies -->
+<script src="js/lib/jquery-3.6.0.min.js"></script>
+<script src="gui/lib/promise-1.0.0.min.js"></script>
+<script src="js/marvinjslauncher.js"></script>
+
+<script>
+function generate() {
+    const smiles = document.getElementById("smile-input").value.trim();
+    if (!smiles) {
+        alert("Please enter a SMILES string");
+        return;
+    }
+
+    fetch('/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ smiles: smiles })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.image_base64) {
+            const imageURL = 'data:image/png;base64,' + data.image_base64;
+            const resultSmiles = data.output_smiles;
+
+            // Show result
+            document.getElementById('moleculeImage').src = imageURL;
+            document.getElementById('moleculeImage').classList.remove('hidden');
+            document.getElementById('placeholderText').classList.add('hidden');
+            document.getElementById('outputSmiles').innerText = resultSmiles;
+
+            // Add to history
+            const historyPanel = document.getElementById('historyPanel');
+            const entry = document.createElement('div');
+            entry.className = 'bg-gray-800 p-4 rounded-lg border border-gray-700';
+            entry.innerHTML = `
+                <img src="${imageURL}" alt="Molecule" class="mb-2">
+                <p class="text-gray-300 text-sm"><strong>Input:</strong> ${smiles}</p>
+                <p class="text-gray-300 text-sm"><strong>Output:</strong> ${resultSmiles}</p>
+            `;
+            historyPanel.prepend(entry);
+
+        } else {
+            alert("Error: " + data.error);
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("An error occurred while generating the molecule.");
+    });
+}
+
+// Fill textarea when clicking example buttons
+document.querySelectorAll('.smile-example').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const smileText = btn.innerText.split(' (')[0];
+        document.getElementById('smile-input').value = smileText;
+    });
+});
+</script>
+<!-- Marvin Full Editor -->
+<div class="iframe-wrapper mt-20">
+    <iframe src="https://www.rcsb.org/chemical-sketch"></iframe>
+  </div>
+        <div class="mt-20">
+            <h3 class="text-3xl font-bold title-font text-center mb-12 gradient-text">Recently Discovered Compounds</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="molecule-card bg-gray-900 bg-opacity-70 p-6 rounded-xl border border-gray-800">
+                    <img src="{{ url_for('static', filename='img1.png') }}" alt="NeuroProtect-247 Molecule" class="w-full h-40 object-contain mb-4 rounded-lg" />
+                    <h4 class="text-xl font-bold text-white mb-2">NeuroProtect-247</h4>
+                    <p class="text-gray-400 text-sm mb-3">
+                        Potential treatment for Alzheimer's disease with 87% predicted efficacy.
+                    </p>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-cyan-400">C23H30N2O4S</span>
+                        <span class="text-purple-400">Phase II Trials</span>
+                    </div>
+                </div>
+
+                <div class="molecule-card bg-gray-900 bg-opacity-70 p-6 rounded-xl border border-gray-800">
+                    <img src="{{ url_for('static', filename='img2.png') }}" alt="NeuroProtect-247 Molecule" class="w-full h-40 object-contain mb-4 rounded-lg" />
+                    <h4 class="text-xl font-bold text-white mb-2">OncoBlast-9X</h4>
+                    <p class="text-gray-400 text-sm mb-3">
+                        Novel targeted therapy for pancreatic cancer with minimal side effects.
+                    </p>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-cyan-400">C18H22FN3O3</span>
+                        <span class="text-purple-400">Pre-Clinical</span>
+                    </div>
+                </div>
+
+                <div class="molecule-card bg-gray-900 bg-opacity-70 p-6 rounded-xl border border-gray-800">
+                    <img src="{{ url_for('static', filename='img3.png') }}" alt="NeuroProtect-247 Molecule" class="w-full h-40 object-contain mb-4 rounded-lg" />
+                    <h4 class="text-xl font-bold text-white mb-2">ViroStop-55</h4>
+                    <p class="text-gray-400 text-sm mb-3">
+                        Broad-spectrum antiviral showing promise against multiple viral families.
+                    </p>
+                    <div class="flex justify-between text-xs">
+                        <span class="text-cyan-400">C16H20N6O5S</span>
+                        <span class="text-purple-400">Phase I Trials</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-gray-900 bg-opacity-50 rounded-xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold title-font mb-4">
+                About <span class="gradient-text">NeuroGen</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Pioneering the future of pharmaceutical research through artificial intelligence.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-6">Our Mission</h3>
+                <p class="text-gray-300 mb-6">
+                    At NeuroGen, we're revolutionizing drug discovery by combining cutting-edge AI with advanced molecular modeling. Our platform accelerates the identification of promising drug candidates, reducing development time from years to months.
+                </p>
+                <p class="text-gray-300 mb-6">
+                    Traditional drug discovery is expensive and time-consuming, with a high failure rate. Our AI models analyze millions of molecular interactions to predict efficacy and safety before synthesis, saving billions in research costs.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="text-cyan-400 mt-1 mr-4">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Speed</h4>
+                            <p class="text-gray-400">Process thousands of compounds in hours instead of months</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-purple-400 mt-1 mr-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Accuracy</h4>
+                            <p class="text-gray-400">Our models achieve 92% prediction accuracy in clinical outcomes</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-pink-400 mt-1 mr-4">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-bold text-white">Cost-Effective</h4>
+                            <p class="text-gray-400">Reduce R&D costs by up to 70% through virtual screening</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl opacity-20 blur"></div>
+                <div class="relative bg-gray-800 rounded-xl overflow-hidden h-96">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <div class="text-6xl mb-6 gradient-text">
+                                <i class="fas fa-dna"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-4">Molecular Intelligence Platform</h3>
+                            <p class="text-gray-300">
+                                Our proprietary algorithms analyze molecular structures at an unprecedented scale, identifying patterns invisible to human researchers.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20">
+            <h3 class="text-3xl font-bold title-font text-center mb-12 gradient-text">Our Technology Stack</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-gray-800 bg-opacity-70 p-6 rounded-xl border border-gray-700 text-center">
+                    <div class="text-4xl text-cyan-400 mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Deep Learning</h4>
+                    <p class="text-gray-400 text-sm">Neural networks trained on molecular datasets</p>
+                </div>
+                <div class="bg-gray-800 bg-opacity-70 p-6 rounded-xl border border-gray-700 text-center">
+                    <div class="text-4xl text-purple-400 mb-4">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Molecular Dynamics</h4>
+                    <p class="text-gray-400 text-sm">Simulations at atomic precision</p>
+                </div>
+                <div class="bg-gray-800 bg-opacity-70 p-6 rounded-xl border border-gray-700 text-center">
+                    <div class="text-4xl text-pink-400 mb-4">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Predictive Analytics</h4>
+                    <p class="text-gray-400 text-sm">Forecast clinical outcomes with AI</p>
+                </div>
+                <div class="bg-gray-800 bg-opacity-70 p-6 rounded-xl border border-gray-700 text-center">
+                    <div class="text-4xl text-green-400 mb-4">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white">Cloud Computing</h4>
+                    <p class="text-gray-400 text-sm">Massive parallel processing power</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold title-font mb-4">
+                Meet <span class="gradient-text">The Team</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                The brilliant minds behind NeuroGen's revolutionary platform.
+            </p>
+        </div>
+
+        <div class="flex justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
+                <!-- Card 1 -->
+                <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border border-gray-800 hover:border-cyan-400 transition-all duration-300 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 p-1">
+                        <div class="bg-gray-900 w-full h-full rounded-full"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Gowthami Neelapu</h3>
+                    <p class="text-cyan-400 font-medium mb-4">Head of Research</p>
+                    <p>
+                        Leads the research team in developing AI algorithms for molecular analysis and drug discovery.
+                    </p>
+                    <div class="flex justify-center space-x-4 mt-6">
+                        <a href="https://www.linkedin.com/in/gowthami-n-805208303/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center px-4 py-2 bg-cyan-500 text-white font-semibold rounded-full shadow-md hover:bg-cyan-600 transition-all duration-300">
+                            <i class="fab fa-linkedin-in mr-2"></i> Connect on LinkedIn
+                        </a>
+
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl border border-gray-800 hover:border-purple-400 transition-all duration-300 text-center">
+                    <div class="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 p-1">
+                        <div class="bg-gray-900 w-full h-full rounded-full"></div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Sri Venkat Reddy</h3>
+                    <p class="text-purple-400 font-medium mb-4">AI Researcher</p>
+                    <p>
+                        Specializes in machine learning models for predicting drug interactions.
+                    </p>
+                    <div class="flex justify-center space-x-4 mt-6">
+                        <a href="https://www.linkedin.com/in/sri-venkat-reddy-5261a4316/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center px-4 py-2 bg-cyan-500 text-white font-semibold rounded-full shadow-md hover:bg-cyan-600 transition-all duration-300">
+                            <i class="fab fa-linkedin-in mr-2"></i> Connect on LinkedIn
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+
+        <div class="mt-16 text-center">
+            <h3 class="text-2xl font-bold title-font mb-6 gradient-text">Join Our Team</h3>
+            <p class="text-gray-300 max-w-2xl mx-auto mb-8">
+                We're always looking for talented researchers, engineers, and visionaries to join our mission of revolutionizing drug discovery.
+            </p>
+            <button class="bg-gradient-to-r from-cyan-500 to-purple-600 px-8 py-3 rounded-full text-white font-bold hover:opacity-90 transition-all duration-300">
+                View Open Positions
+            </button>
+        </div>
+    </section>
+
+    <footer class="bg-black bg-opacity-80 py-12 px-4 sm:px-6 lg:px-8 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold title-font gradient-text mb-4">NEUROGEN</h3>
+                    <p class="text-gray-400">
+                        Accelerating drug discovery through artificial intelligence and molecular modeling.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Platform</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">Drug Discovery</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">Molecular Analysis</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">Virtual Screening</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">API Access</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">Research Papers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-all duration-300">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="text-gray-400">info@neurogen.ai</li>
+                        <li class="text-gray-400">+91 XXXXX XXXXX</li>
+                        <li class="text-gray-400">300 Molecular Way<br>India, Telangana</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">
+                    © 2025 NeuroGen AI. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition-all duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition-all duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-300 text-sm transition-all duration-300">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
