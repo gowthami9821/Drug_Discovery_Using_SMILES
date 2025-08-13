@@ -29,5 +29,14 @@ A web-based platform to design, visualize, and analyze molecular structures usin
 ```bash
 git clone https://github.com/gowthami9821/Drug_Discovery_Using_SMILES.git
 cd Drug_Discovery_Using_SMILES
----
-###
+```
+### 2. Download requirements
+```bash
+pip install -r requirements.txt
+```
+### 3.Run
+```bash
+python app.py
+```
+
+
