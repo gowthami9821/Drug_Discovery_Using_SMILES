@@ -18,7 +18,7 @@ A web-based platform to design, visualize, and analyze molecular structures usin
 
 - **Frontend:** HTML5, CSS3, JavaScript  
 - **Chemical Editor:** [MarvinJS](https://chemaxon.com/products/marvin-js)  
-- **Backend (optional):** Python / Flask (if using REST endpoints)  
+- **Backend**:**Flask 
 - **Version Control:** Git + GitHub  
 
 ---
@@ -29,3 +29,5 @@ A web-based platform to design, visualize, and analyze molecular structures usin
 ```bash
 git clone https://github.com/gowthami9821/Drug_Discovery_Using_SMILES.git
 cd Drug_Discovery_Using_SMILES
+---
+###
